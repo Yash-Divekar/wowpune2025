@@ -33,28 +33,44 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
-  const dropAnimation = {
-    initial: { y: -100, opacity: 0 },
-    animate: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        bounce: 0.5,
-        duration: 1,
-      },
+  const toddleAnimations = [
+    {
+      initial: { y: -200, x: -50, rotate: 45, opacity: 0 },
+      animate: { y: 0, x: 0, rotate: 0, opacity: 1 },
+      delay: 0.2,
+      bounce: 0.6,
     },
-    hover: {
-      scale: 1.1,
-      rotate: [0, -5, 5, 0],
-      transition: {
-        rotate: {
-          repeat: Infinity,
-          duration: 2,
-        },
-      },
+    {
+      initial: { y: -150, x: 50, rotate: -30, opacity: 0 },
+      animate: { y: 0, x: 0, rotate: 0, opacity: 1 },
+      delay: 0.5,
+      bounce: 0.5,
     },
-  };
+    {
+      initial: { y: -250, x: -30, rotate: 45, opacity: 0 },
+      animate: { y: 0, x: 0, rotate: 45, opacity: 1 },
+      delay: 0.8,
+      bounce: 0.7,
+    },
+    {
+      initial: { y: -180, x: 40, rotate: -20, opacity: 0 },
+      animate: { y: 0, x: 0, rotate: 0, opacity: 1 },
+      delay: 1.1,
+      bounce: 0.6,
+    },
+    {
+      initial: { y: -220, x: -20, rotate: 25, opacity: 0 },
+      animate: { y: 0, x: 0, rotate: 0, opacity: 1 },
+      delay: 1.4,
+      bounce: 0.5,
+    },
+    {
+      initial: { y: -160, x: 30, rotate: -35, opacity: 0 },
+      animate: { y: 0, x: 0, rotate: 0, opacity: 1 },
+      delay: 1.7,
+      bounce: 0.7,
+    },
+  ];
 
   const bounceVariants = {
     initial: { y: -200, opacity: 0 },
@@ -93,7 +109,7 @@ export default function Home() {
         }}
       />
       <motion.img
-        src="/image_1.png"
+        src="/image_2.png"
         alt=""
         className="h-screen"
         initial={{ x: -100, rotate: -10, opacity: 0 }}
@@ -113,26 +129,36 @@ export default function Home() {
           alt=""
           className={`absolute ${
             index === 1
-              ? "w-24 top-[40vh] left-[23vw]"
+              ? "w-32 top-[15vh] left-[0.5vw]"
               : index === 2
-              ? "w-24 top-[55vh] left-[20vw]"
+              ? "w-32 top-[15vh] left-[8vw]"
               : index === 3
-              ? "w-16 top-[72vh] left-[21vw]"
+              ? "w-28 top-[27vh] -left-[2vw] rotate-45"
               : index === 4
-              ? "w-18 top-[80vh] left-[18vw]"
+              ? "w-40 top-[40vh] left-[15vw]"
               : index === 5
-              ? "w-60 top-[73vh] left-[21vw]"
-              : "w-52 top-[83vh] left-[10vw]"
+              ? "w-20 top-[42vh] left-[7vw]"
+              : "w-20 top-[43vh] left-[1vw]"
           }`}
-          variants={dropAnimation}
-          initial="initial"
-          animate="animate"
-          whileHover="hover"
+          initial={toddleAnimations[index - 1].initial}
+          animate={toddleAnimations[index - 1].animate}
           transition={{
-            delay: index * 0.2,
             type: "spring",
-            stiffness: 200,
-            damping: 15,
+            stiffness: 150,
+            damping: 12,
+            delay: toddleAnimations[index - 1].delay,
+            bounce: toddleAnimations[index - 1].bounce,
+            duration: 1.2,
+          }}
+          whileHover={{
+            scale: 1.1,
+            rotate: [0, -5, 5, 0],
+            transition: {
+              rotate: {
+                repeat: Infinity,
+                duration: 2,
+              },
+            },
           }}
         />
       ))}
