@@ -1,0 +1,24 @@
+{
+    "FAQ" : [
+        {
+        "Question" : "What is Google developer group Pune's WOW event? ",
+        "Answer" : "The WOW event is a special conference organized by GDG Pune focused on innovation, technology, and fostering connections within the developer community. It brings together tech enthusiasts, industry experts, and beginners alike for learning and networking opportunities."
+        },
+        {
+            "Question": "When and Where will the WOW event take place?",
+            "Answer" : "The WOW event is coming soon to Pune! Stay tuned for updates on the venue, date, and time. Details will be announced shortly."
+        },
+        {
+            "Question" : "How can i register for the event?",
+            "Answer" : "Registration for the WOW event isn't live yet! Stay tuned for updates on when you can secure your spot. Details will be announced soon."
+        },
+        {
+            "Question" : "What topics will be covered at the WOW event?",
+            "Answer": "The WOW event will feature a diverse range of topics, including AI/ML, Web Development, Cloud Computing, Mobile Development, and more. The final lineup is still being finalized, and additional topics may be included. Stay tuned for updates!"
+        },
+        {
+            "Question": "Will there be networking opportunities?",
+            "Answer" : "The WOW event will feature a diverse range of topics, including AI/ML, Web Development, Cloud Computing, Mobile Development, and more. The final lineup is still being finalized, and additional topics may be included. Stay tuned for updates!"
+        }
+    ]
+}

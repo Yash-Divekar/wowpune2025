@@ -1,5 +1,5 @@
 import "./App.css";
-import {Home, Previous_speaker, Previous_Sponcers} from "./pages";
+import {Home, Previous_speaker, Previous_Sponcers , FAQ} from "./pages";
 
 function App() {
   return (
@@ -7,6 +7,7 @@ function App() {
       <Home />
       <Previous_speaker />
       <Previous_Sponcers />
+      <FAQ />
     </main>
   );
 }
