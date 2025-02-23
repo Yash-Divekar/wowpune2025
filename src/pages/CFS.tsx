@@ -20,7 +20,6 @@ export default function CFS() {
         <p className="text-2xl mt-2">Join the WOW revolution.</p>
       </motion.div>
 
-      {/* Bottom Images - Positioned below the card */}
       <motion.img
         src="/toddles/image_15.png"
         alt=""

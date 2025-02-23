@@ -35,48 +35,47 @@ export default function Home() {
 
   const toddleAnimations = [
     {
-      initial: { y: -200, x: -50, rotate: 45, opacity: 0 },
-      animate: { y: 0, x: 0, rotate: 0, opacity: 1 },
+      initial: { y: -200, x: -50, rotate: 45 },
+      animate: { y: 0, x: 0, rotate: 0 },
       delay: 0.2,
       bounce: 0.6,
     },
     {
-      initial: { y: -150, x: 50, rotate: -30, opacity: 0 },
-      animate: { y: 0, x: 0, rotate: 0, opacity: 1 },
+      initial: { y: -150, x: 50, rotate: -30 },
+      animate: { y: 0, x: 0, rotate: 0 },
       delay: 0.5,
       bounce: 0.5,
     },
     {
-      initial: { y: -250, x: -30, rotate: 45, opacity: 0 },
-      animate: { y: 0, x: 0, rotate: 45, opacity: 1 },
+      initial: { y: -250, x: -30, rotate: 45 },
+      animate: { y: 0, x: 0, rotate: 45 },
       delay: 0.8,
       bounce: 0.7,
     },
     {
-      initial: { y: -180, x: 40, rotate: -20, opacity: 0 },
-      animate: { y: 0, x: 0, rotate: 0, opacity: 1 },
+      initial: { y: -180, x: 40, rotate: -20 },
+      animate: { y: 0, x: 0, rotate: 0 },
       delay: 1.1,
       bounce: 0.6,
     },
     {
-      initial: { y: -220, x: -20, rotate: 25, opacity: 0 },
-      animate: { y: 0, x: 0, rotate: 0, opacity: 1 },
+      initial: { y: -220, x: -20, rotate: 25 },
+      animate: { y: 0, x: 0, rotate: 0 },
       delay: 1.4,
       bounce: 0.5,
     },
     {
-      initial: { y: -160, x: 30, rotate: -35, opacity: 0 },
-      animate: { y: 0, x: 0, rotate: 0, opacity: 1 },
+      initial: { y: -160, x: 30, rotate: -35 },
+      animate: { y: 0, x: 0, rotate: 0 },
       delay: 1.7,
       bounce: 0.7,
     },
   ];
 
   const bounceVariants = {
-    initial: { y: -200, opacity: 0 },
+    initial: { y: -200 },
     animate: {
       y: 0,
-      opacity: 1,
       transition: {
         type: "spring",
         stiffness: 200,
@@ -92,6 +91,37 @@ export default function Home() {
       },
     },
   };
+
+  const countdownItems = [
+    {
+      label: "Days",
+      value: timeLeft.days,
+      borderColor: "#0043B2",
+      headerBg: "#3061B2",
+      contentBg: "#4285F4",
+    },
+    {
+      label: "Hours",
+      value: timeLeft.hours,
+      borderColor: "#BF0F00",
+      headerBg: "#B23328",
+      contentBg: "#EA4335",
+    },
+    {
+      label: "Minutes",
+      value: timeLeft.minutes,
+      borderColor: "#CCA300",
+      headerBg: "#B2941B",
+      contentBg: "#EABC00",
+    },
+    {
+      label: "Seconds",
+      value: timeLeft.seconds,
+      borderColor: "#006C1D",
+      headerBg: "#2A8442",
+      contentBg: "#34A853",
+    },
+  ];
 
   return (
     <div className="relative flex flex-row">
@@ -211,43 +241,28 @@ export default function Home() {
 
         <motion.div
           className="text-white text-center flex flex-row gap-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ scale: 0.8 }}
+          animate={{ scale: 1 }}
           transition={{ delay: 1.1 }}
         >
-          {[
-            {
-              label: "Days",
-              value: timeLeft.days,
-              color: ["#0043B2", "#3061B2", "#4285F4"],
-            },
-            {
-              label: "Hours",
-              value: timeLeft.hours,
-              color: ["#BF0F00", "#B23328", "#EA4335"],
-            },
-            {
-              label: "Minutes",
-              value: timeLeft.minutes,
-              color: ["#CCA300", "#B2941B", "#EABC00"],
-            },
-            {
-              label: "Seconds",
-              value: timeLeft.seconds,
-              color: ["#006C1D", "#2A8442", "#34A853"],
-            },
-          ].map((item, index) => (
+          {countdownItems.map((item, index) => (
             <motion.div
               key={item.label}
-              className={`border border-[${item.color[0]}] rounded-xl overflow-clip w-20`}
+              className="rounded-xl overflow-clip w-20"
+              style={{ border: `1px solid ${item.borderColor}` }}
               variants={bounceVariants}
               initial="initial"
               animate="animate"
               whileHover="hover"
               transition={{ delay: 1.1 + index * 0.1 }}
             >
-              <div className={`bg-[${item.color[1]}] py-1`}>{item.label}</div>
-              <div className={`bg-[${item.color[2]}] py-3 text-2xl`}>
+              <div style={{ backgroundColor: item.headerBg }} className="py-1">
+                {item.label}
+              </div>
+              <div
+                style={{ backgroundColor: item.contentBg }}
+                className="py-3 text-2xl"
+              >
                 {String(item.value).padStart(2, "0")}
               </div>
             </motion.div>
@@ -256,8 +271,8 @@ export default function Home() {
 
         <motion.button
           className="bg-gradient-to-r from-[#4285F4] to-[#79ACFF] px-10 py-2 text-white text-lg rounded-full mt-4"
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
+          initial={{ y: 100 }}
+          animate={{ y: 0 }}
           whileHover={{
             scale: 1.1,
             transition: {
