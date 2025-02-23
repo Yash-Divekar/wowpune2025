@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState({
@@ -7,6 +7,12 @@ export default function Home() {
     hours: 0,
     minutes: 0,
     seconds: 0,
+  });
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    once: true,
+    margin: "-20%",
   });
 
   useEffect(() => {
@@ -35,47 +41,48 @@ export default function Home() {
 
   const toddleAnimations = [
     {
-      initial: { y: -200, x: -50, rotate: 45 },
-      animate: { y: 0, x: 0, rotate: 0 },
+      initial: { y: -200, x: -50, rotate: 45, opacity: 0 },
+      animate: { y: 0, x: 0, rotate: 0, opacity: 1 },
       delay: 0.2,
       bounce: 0.6,
     },
     {
-      initial: { y: -150, x: 50, rotate: -30 },
-      animate: { y: 0, x: 0, rotate: 0 },
+      initial: { y: -150, x: 50, rotate: -30, opacity: 0 },
+      animate: { y: 0, x: 0, rotate: 0, opacity: 1 },
       delay: 0.5,
       bounce: 0.5,
     },
     {
-      initial: { y: -250, x: -30, rotate: 45 },
-      animate: { y: 0, x: 0, rotate: 45 },
+      initial: { y: -250, x: -30, rotate: 45, opacity: 0 },
+      animate: { y: 0, x: 0, rotate: 45, opacity: 1 },
       delay: 0.8,
       bounce: 0.7,
     },
     {
-      initial: { y: -180, x: 40, rotate: -20 },
-      animate: { y: 0, x: 0, rotate: 0 },
+      initial: { y: -180, x: 40, rotate: -20, opacity: 0 },
+      animate: { y: 0, x: 0, rotate: 0, opacity: 1 },
       delay: 1.1,
       bounce: 0.6,
     },
     {
-      initial: { y: -220, x: -20, rotate: 25 },
-      animate: { y: 0, x: 0, rotate: 0 },
+      initial: { y: -220, x: -20, rotate: 25, opacity: 0 },
+      animate: { y: 0, x: 0, rotate: 0, opacity: 1 },
       delay: 1.4,
       bounce: 0.5,
     },
     {
-      initial: { y: -160, x: 30, rotate: -35 },
-      animate: { y: 0, x: 0, rotate: 0 },
+      initial: { y: -160, x: 30, rotate: -35, opacity: 0 },
+      animate: { y: 0, x: 0, rotate: 0, opacity: 1 },
       delay: 1.7,
       bounce: 0.7,
     },
   ];
 
   const bounceVariants = {
-    initial: { y: -200 },
+    initial: { y: -200, opacity: 0 },
     animate: {
       y: 0,
+      opacity: 1,
       transition: {
         type: "spring",
         stiffness: 200,
@@ -124,13 +131,15 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative flex flex-row">
+    <div ref={ref} className="relative flex flex-row">
       <motion.img
         src="/grid.png"
         alt=""
         className="absolute -z-10 h-screen w-screen"
         initial={{ scale: 1.2, opacity: 0 }}
-        animate={{ scale: 1, opacity: 0.8 }}
+        animate={
+          isInView ? { scale: 1, opacity: 0.8 } : { scale: 1.2, opacity: 0 }
+        }
         transition={{
           type: "spring",
           stiffness: 100,
@@ -143,7 +152,11 @@ export default function Home() {
         alt=""
         className="h-screen"
         initial={{ x: -100, rotate: -10, opacity: 0 }}
-        animate={{ x: 0, rotate: 0, opacity: 1 }}
+        animate={
+          isInView
+            ? { x: 0, rotate: 0, opacity: 1 }
+            : { x: -100, rotate: -10, opacity: 0 }
+        }
         transition={{
           type: "spring",
           stiffness: 100,
@@ -171,12 +184,16 @@ export default function Home() {
               : "w-20 top-[43vh] left-[1vw]"
           }`}
           initial={toddleAnimations[index - 1].initial}
-          animate={toddleAnimations[index - 1].animate}
+          animate={
+            isInView
+              ? toddleAnimations[index - 1].animate
+              : toddleAnimations[index - 1].initial
+          }
           transition={{
             type: "spring",
             stiffness: 150,
             damping: 12,
-            delay: toddleAnimations[index - 1].delay,
+            delay: isInView ? toddleAnimations[index - 1].delay : 0,
             bounce: toddleAnimations[index - 1].bounce,
             duration: 1.2,
           }}
@@ -196,7 +213,7 @@ export default function Home() {
       <div className="text-black ml-auto text-right mr-10 mt-[25vh] flex flex-col gap-4 items-end">
         <motion.h2
           initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
+          animate={isInView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
           transition={{
             type: "spring",
             stiffness: 150,
@@ -215,8 +232,12 @@ export default function Home() {
           src="/wow_logo.png"
           alt=""
           className="w-[30vw]"
-          initial={{ scale: 0, rotate: -10 }}
-          animate={{ scale: 1, rotate: 0 }}
+          initial={{ scale: 0, rotate: -10, opacity: 0 }}
+          animate={
+            isInView
+              ? { scale: 1, rotate: 0, opacity: 1 }
+              : { scale: 0, rotate: -10, opacity: 0 }
+          }
           transition={{
             type: "spring",
             stiffness: 200,
@@ -229,8 +250,12 @@ export default function Home() {
           src="/pune_slogan.png"
           alt=""
           className="w-[24vw]"
-          initial={{ scale: 0, rotate: 10 }}
-          animate={{ scale: 1, rotate: 0 }}
+          initial={{ scale: 0, rotate: 10, opacity: 0 }}
+          animate={
+            isInView
+              ? { scale: 1, rotate: 0, opacity: 1 }
+              : { scale: 0, rotate: 10, opacity: 0 }
+          }
           transition={{
             type: "spring",
             stiffness: 200,
@@ -241,8 +266,10 @@ export default function Home() {
 
         <motion.div
           className="text-white text-center flex flex-row gap-8"
-          initial={{ scale: 0.8 }}
-          animate={{ scale: 1 }}
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={
+            isInView ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }
+          }
           transition={{ delay: 1.1 }}
         >
           {countdownItems.map((item, index) => (
@@ -252,9 +279,9 @@ export default function Home() {
               style={{ border: `1px solid ${item.borderColor}` }}
               variants={bounceVariants}
               initial="initial"
-              animate="animate"
+              animate={isInView ? "animate" : "initial"}
               whileHover="hover"
-              transition={{ delay: 1.1 + index * 0.1 }}
+              transition={{ delay: isInView ? 1.1 + index * 0.1 : 0 }}
             >
               <div style={{ backgroundColor: item.headerBg }} className="py-1">
                 {item.label}
@@ -271,8 +298,8 @@ export default function Home() {
 
         <motion.button
           className="bg-gradient-to-r from-[#4285F4] to-[#79ACFF] px-10 py-2 text-white text-lg rounded-full mt-4"
-          initial={{ y: 100 }}
-          animate={{ y: 0 }}
+          initial={{ y: 100, opacity: 0 }}
+          animate={isInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
           whileHover={{
             scale: 1.1,
             transition: {

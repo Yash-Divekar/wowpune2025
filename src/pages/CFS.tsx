@@ -1,15 +1,22 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 export default function CFS() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    once: true,
+    margin: "-20%",
+  });
+
   return (
     <div
+      ref={ref}
       style={{ backgroundImage: "url('/grid.png')" }}
       className="min-h-screen bg-contain pt-30 px-20 flex flex-col gap-10 relative"
     >
       <motion.div
-        initial={{ x: -50 }}
-        animate={{ x: 0 }}
+        initial={{ x: -50, opacity: 0 }}
+        animate={isInView ? { x: 0, opacity: 1 } : { x: -50, opacity: 0 }}
         transition={{
           type: "spring",
           bounce: 0.4,
@@ -24,8 +31,12 @@ export default function CFS() {
         src="/toddles/image_15.png"
         alt=""
         className="absolute left-1/2 bottom-[5vh] w-56 -translate-x-[calc(50%+22rem)] z-0"
-        initial={{ y: 100, rotate: -15, scale: 0.8 }}
-        animate={{ y: 0, rotate: 0, scale: 1 }}
+        initial={{ y: 100, rotate: -15, scale: 0.8, opacity: 0 }}
+        animate={
+          isInView
+            ? { y: 0, rotate: 0, scale: 1, opacity: 1 }
+            : { y: 100, rotate: -15, scale: 0.8, opacity: 0 }
+        }
         transition={{
           type: "spring",
           bounce: 0.4,
@@ -37,8 +48,12 @@ export default function CFS() {
         src="/toddles/image_16.png"
         alt=""
         className="absolute right-1/2 bottom-[10vh] w-40 translate-x-[calc(50%+22rem)] z-0"
-        initial={{ y: 100, rotate: 15, scale: 0.8 }}
-        animate={{ y: 0, rotate: 0, scale: 1 }}
+        initial={{ y: 100, rotate: 15, scale: 0.8, opacity: 0 }}
+        animate={
+          isInView
+            ? { y: 0, rotate: 0, scale: 1, opacity: 1 }
+            : { y: 100, rotate: 15, scale: 0.8, opacity: 0 }
+        }
         transition={{
           type: "spring",
           bounce: 0.4,
@@ -47,11 +62,14 @@ export default function CFS() {
         }}
       />
 
-      {/* Main Card */}
       <motion.div
         className="relative flex flex-col items-center text-center gap-5 mx-auto bg-white px-20 py-20 rounded-2xl border border-black w-[40vw] shadow-2xl z-10"
-        initial={{ y: 50, scale: 0.95 }}
-        animate={{ y: 0, scale: 1 }}
+        initial={{ y: 50, scale: 0.95, opacity: 0 }}
+        animate={
+          isInView
+            ? { y: 0, scale: 1, opacity: 1 }
+            : { y: 50, scale: 0.95, opacity: 0 }
+        }
         transition={{
           type: "spring",
           bounce: 0.4,
@@ -74,13 +92,16 @@ export default function CFS() {
           Proposal Submission Coming Soon
         </motion.button>
 
-        {/* Top Images - Positioned above the card */}
         <motion.img
           src="/toddles/image_13.png"
           alt=""
           className="absolute -top-4 left-0 w-56 -translate-x-1/2 z-20"
-          initial={{ y: -100, rotate: 15, scale: 0.8 }}
-          animate={{ y: 0, rotate: 0, scale: 1 }}
+          initial={{ y: -100, rotate: 15, scale: 0.8, opacity: 0 }}
+          animate={
+            isInView
+              ? { y: 0, rotate: 0, scale: 1, opacity: 1 }
+              : { y: -100, rotate: 15, scale: 0.8, opacity: 0 }
+          }
           transition={{
             type: "spring",
             bounce: 0.4,
@@ -91,8 +112,12 @@ export default function CFS() {
           src="/toddles/image_14.png"
           alt=""
           className="absolute top-0 right-0 w-56 translate-x-1/2 -translate-y-1/2 z-20"
-          initial={{ y: -100, rotate: -15, scale: 0.8 }}
-          animate={{ y: 0, rotate: 0, scale: 1 }}
+          initial={{ y: -100, rotate: -15, scale: 0.8, opacity: 0 }}
+          animate={
+            isInView
+              ? { y: 0, rotate: 0, scale: 1, opacity: 1 }
+              : { y: -100, rotate: -15, scale: 0.8, opacity: 0 }
+          }
           transition={{
             type: "spring",
             bounce: 0.4,

@@ -1,12 +1,19 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 export default function About() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    once: true,
+    margin: "-20%",
+  });
+
   const textVariants = {
-    initial: { y: 20, scale: 0.95 },
+    initial: { y: 20, scale: 0.95, opacity: 0 },
     animate: {
       y: 0,
       scale: 1,
+      opacity: 1,
       transition: {
         type: "spring",
         bounce: 0.5,
@@ -16,12 +23,14 @@ export default function About() {
   };
 
   return (
-    <div className="bg-[#E5F2FF] min-h-screen flex flex-row px-16">
+    <div ref={ref} className="bg-[#E5F2FF] min-h-screen flex flex-row px-16">
       <div className="flex flex-col w-[45vw] ml-10 items-center gap-5 my-auto">
         <motion.div
           className="bg-[#4285F4] border border-black text-white font-semibold px-14 py-2 text-2xl rounded-full w-fit"
-          initial={{ scale: 0.5 }}
-          animate={{ scale: 1 }}
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={
+            isInView ? { scale: 1, opacity: 1 } : { scale: 0.5, opacity: 0 }
+          }
           transition={{
             type: "spring",
             bounce: 0.6,
@@ -32,8 +41,12 @@ export default function About() {
         </motion.div>
         <motion.div
           className="relative bg-white border-2 border-[#4285F4] rounded-2xl px-20 py-10 flex flex-col gap-8 text-lg"
-          initial={{ y: 50, scale: 0.95 }}
-          animate={{ y: 0, scale: 1 }}
+          initial={{ y: 50, scale: 0.95, opacity: 0 }}
+          animate={
+            isInView
+              ? { y: 0, scale: 1, opacity: 1 }
+              : { y: 50, scale: 0.95, opacity: 0 }
+          }
           transition={{
             type: "spring",
             bounce: 0.4,
@@ -44,7 +57,7 @@ export default function About() {
           <motion.span
             variants={textVariants}
             initial="initial"
-            animate="animate"
+            animate={isInView ? "animate" : "initial"}
             transition={{ delay: 0.4 }}
           >
             Welcome to Google Developer Student Clubs Wonder of Wonders - where
@@ -53,7 +66,7 @@ export default function About() {
           <motion.span
             variants={textVariants}
             initial="initial"
-            animate="animate"
+            animate={isInView ? "animate" : "initial"}
             transition={{ delay: 0.6 }}
           >
             GDSC WoW is an extraordinary annual celebration that brings together
@@ -64,7 +77,7 @@ export default function About() {
           <motion.span
             variants={textVariants}
             initial="initial"
-            animate="animate"
+            animate={isInView ? "animate" : "initial"}
             transition={{ delay: 0.8 }}
           >
             Join us for an incredible journey filled with workshops, hackathons,
@@ -76,8 +89,12 @@ export default function About() {
             src="/toddles/image_7.png"
             alt=""
             className="absolute w-28 top-0 left-0 -translate-x-1/2 -translate-y-1/6"
-            initial={{ y: -100, rotate: -15, scale: 0.8 }}
-            animate={{ y: 0, rotate: 0, scale: 1 }}
+            initial={{ y: -100, rotate: -15, scale: 0.8, opacity: 0 }}
+            animate={
+              isInView
+                ? { y: 0, rotate: 0, scale: 1, opacity: 1 }
+                : { y: -100, rotate: -15, scale: 0.8, opacity: 0 }
+            }
             transition={{
               type: "spring",
               bounce: 0.7,
@@ -93,8 +110,12 @@ export default function About() {
             src="/toddles/image_8.png"
             alt=""
             className="absolute w-28 bottom-0 right-0 translate-x-1/2 translate-y-1/6"
-            initial={{ y: 100, rotate: 15, scale: 0.8 }}
-            animate={{ y: 0, rotate: 0, scale: 1 }}
+            initial={{ y: 100, rotate: 15, scale: 0.8, opacity: 0 }}
+            animate={
+              isInView
+                ? { y: 0, rotate: 0, scale: 1, opacity: 1 }
+                : { y: 100, rotate: 15, scale: 0.8, opacity: 0 }
+            }
             transition={{
               type: "spring",
               bounce: 0.7,
@@ -113,8 +134,12 @@ export default function About() {
           src="/toddles/image_9.png"
           alt=""
           className="absolute top-0 left-0 w-[200px] object-contain ml-10"
-          initial={{ y: -200, rotate: -15, scale: 0.9 }}
-          animate={{ y: 0, rotate: 0, scale: 1 }}
+          initial={{ y: -200, rotate: -15, scale: 0.9, opacity: 0 }}
+          animate={
+            isInView
+              ? { y: 0, rotate: 0, scale: 1, opacity: 1 }
+              : { y: -200, rotate: -15, scale: 0.9, opacity: 0 }
+          }
           transition={{
             type: "spring",
             bounce: 0.6,
@@ -127,8 +152,12 @@ export default function About() {
           src="/toddles/image_10.png"
           alt=""
           className="absolute top-0 right-0 w-[246px] h-[199px] object-contain mt-20"
-          initial={{ y: -20, rotate: 5, scale: 0.95 }}
-          animate={{ y: 0, rotate: 0, scale: 1 }}
+          initial={{ y: -20, rotate: 5, scale: 0.95, opacity: 0 }}
+          animate={
+            isInView
+              ? { y: 0, rotate: 0, scale: 1, opacity: 1 }
+              : { y: -20, rotate: 5, scale: 0.95, opacity: 0 }
+          }
           transition={{
             type: "spring",
             bounce: 0.4,
@@ -141,8 +170,12 @@ export default function About() {
           src="/toddles/image_11.png"
           alt=""
           className="absolute bottom-0 left-0 w-[200px] object-contain ml-5 mb-10"
-          initial={{ y: 20, rotate: -5, scale: 0.95 }}
-          animate={{ y: 0, rotate: 0, scale: 1 }}
+          initial={{ y: 20, rotate: -5, scale: 0.95, opacity: 0 }}
+          animate={
+            isInView
+              ? { y: 0, rotate: 0, scale: 1, opacity: 1 }
+              : { y: 20, rotate: -5, scale: 0.95, opacity: 0 }
+          }
           transition={{
             type: "spring",
             bounce: 0.4,
@@ -155,8 +188,12 @@ export default function About() {
           src="/toddles/image_12.png"
           alt=""
           className="absolute bottom-0 right-0 w-[200px] object-contain mr-11 -mb-10"
-          initial={{ y: 200, rotate: 15, scale: 0.9 }}
-          animate={{ y: 0, rotate: 0, scale: 1 }}
+          initial={{ y: 200, rotate: 15, scale: 0.9, opacity: 0 }}
+          animate={
+            isInView
+              ? { y: 0, rotate: 0, scale: 1, opacity: 1 }
+              : { y: 200, rotate: 15, scale: 0.9, opacity: 0 }
+          }
           transition={{
             type: "spring",
             bounce: 0.6,
