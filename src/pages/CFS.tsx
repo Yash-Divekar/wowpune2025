@@ -11,9 +11,30 @@ export default function CFS() {
   return (
     <div
       ref={ref}
-      style={{ backgroundImage: "url('/grid.png')" }}
-      className="min-h-screen bg-contain pt-30 px-20 flex flex-col gap-10 relative"
+      className="relative min-h-screen bg-contain pt-30 px-20 flex flex-col gap-10"
     >
+      <motion.div
+  className="absolute top-0 left-0 w-full h-[80%] flex items-center justify-center z-0 overflow-hidden"
+  initial={{ opacity: 0, y: "-100%" }} // Grid starts from top and invisible
+  animate={{ opacity: 0.7, y: "0%" }} // Fades in and stays visible
+  transition={{ duration: 1.5, ease: "easeInOut" }}
+  style={{
+    WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+    maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+  }}
+>
+  <motion.img
+    src="/src/assets/grid lines.png"
+    alt="Grid Background"
+    className="w-full object-cover"
+    initial={{ opacity: 1 }}
+    animate={{ opacity: 1 }} // Grid remains slightly visible instead of disappearing
+    transition={{ duration: 2, delay: 1.5, ease: "easeOut" }}
+  />
+</motion.div>
+
+
+      {/* Heading and Description */}
       <motion.div
         initial={{ x: -50, opacity: 0 }}
         animate={isInView ? { x: 0, opacity: 1 } : { x: -50, opacity: 0 }}
@@ -27,11 +48,12 @@ export default function CFS() {
         <p className="text-2xl mt-2">Join the WOW revolution.</p>
       </motion.div>
 
+      {/* Floating Images */}
       <motion.img
         src="/toddles/image_15.png"
         alt=""
-        className="absolute left-1/2 bottom-[5vh] w-56 -translate-x-[calc(50%+22rem)] z-0"
-        initial={{ y: 100, rotate: -15, scale: 0.8, opacity: 0 }}
+        className="absolute left-1/2 -rotate-30 bottom-[5vh] w-56 -translate-x-[calc(50%+22rem)] z-20"
+        initial={{ y: 100, rotate: -30, scale: 0.8, opacity: 0 }}
         animate={
           isInView
             ? { y: 0, rotate: 0, scale: 1, opacity: 1 }
@@ -47,7 +69,7 @@ export default function CFS() {
       <motion.img
         src="/toddles/image_16.png"
         alt=""
-        className="absolute right-1/2 bottom-[10vh] w-40 translate-x-[calc(50%+22rem)] z-0"
+        className="absolute right-1/2 rotate- bottom-[10vh] w-40 translate-x-[calc(50%+22rem)] z-0"
         initial={{ y: 100, rotate: 15, scale: 0.8, opacity: 0 }}
         animate={
           isInView
@@ -62,6 +84,7 @@ export default function CFS() {
         }}
       />
 
+      {/* Call to Action Section */}
       <motion.div
         className="relative flex flex-col items-center text-center gap-5 mx-auto bg-white px-20 py-20 rounded-2xl border border-black w-[40vw] shadow-2xl z-10"
         initial={{ y: 50, scale: 0.95, opacity: 0 }}
@@ -92,6 +115,7 @@ export default function CFS() {
           Proposal Submission Coming Soon
         </motion.button>
 
+        {/* Floating Graphics */}
         <motion.img
           src="/toddles/image_13.png"
           alt=""

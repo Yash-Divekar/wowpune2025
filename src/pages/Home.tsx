@@ -210,6 +210,36 @@ export default function Home() {
         />
       ))}
 
+<motion.img
+          src={`./src/assets/Logo/Angle_Logo.svg`}
+          alt=""
+          className="absolute -top-30 scale-[20%]"
+          initial={toddleAnimations[3].initial}
+          animate={
+            isInView
+              ? toddleAnimations[3].animate
+              : toddleAnimations[3].initial
+          }
+          transition={{
+            type: "spring",
+            stiffness: 150,
+            damping: 12,
+            delay: isInView ? toddleAnimations[3].delay : 0,
+            bounce: toddleAnimations[3].bounce,
+            duration: 1.2,
+          }}
+          whileHover={{
+            scale: 1.1,
+            rotate: [0, -5, 5, 0],
+            transition: {
+              rotate: {
+                repeat: Infinity,
+                duration: 2,
+              },
+            },
+          }}
+        />
+
       <div className="text-black ml-auto text-right mr-10 mt-[25vh] flex flex-col gap-4 items-end">
         <motion.h2
           initial={{ x: 100, opacity: 0 }}
@@ -222,29 +252,56 @@ export default function Home() {
           }}
         >
           <span className="text-2xl font-sans font-bold bg-gradient-to-r from-[#EA4335] via-[#4285F4] to-[#34A853] text-transparent bg-clip-text">
-            Google Developer Groups पुणे
+            Google Developer Groups on Campus पुणे
           </span>
           <br />
-          <span className="text-lg">Presents</span>
+          <span className="text-xl">Presents</span>
         </motion.h2>
+          
+        <div className="relative flex justify-center items-center">
+  {/* Main Image */}
+  <motion.img
+    src="./src/assets/Logo/wow.svg"
+    alt=""
+    className="w-[30vw]"
+    initial={{ scale: 0, rotate: -10, opacity: 0 }}
+    animate={
+      isInView
+        ? { scale: 1, rotate: 0, opacity: 1 }
+        : { scale: 0, rotate: -10, opacity: 0 }
+    }
+    transition={{
+      type: "spring",
+      stiffness: 200,
+      damping: 15,
+      delay: 0.7,
+    }}
+  />
 
-        <motion.img
-          src="/wow_logo.png"
-          alt=""
-          className="w-[30vw]"
-          initial={{ scale: 0, rotate: -10, opacity: 0 }}
-          animate={
-            isInView
-              ? { scale: 1, rotate: 0, opacity: 1 }
-              : { scale: 0, rotate: -10, opacity: 0 }
-          }
-          transition={{
-            type: "spring",
-            stiffness: 200,
-            damping: 15,
-            delay: 0.7,
-          }}
-        />
+  {/* Overlay Circle */}
+  <motion.img
+    src="./src/assets/Logo/Circle.svg"
+    alt=""
+    className="w-[5vw] absolute top-[51%] left-[52%] -translate-x-1/2 -translate-y-1/2"
+    initial={{ scale: 0, rotate: -10, opacity: 0 }}
+    animate={
+      isInView
+        ? { scale: 1, rotate: 0, opacity: 1 }
+        : { scale: 0, rotate: -10, opacity: 0 }
+    }
+    transition={{
+      type: "spring",
+      stiffness: 200,
+      damping: 15,
+      delay: 0.7,
+    }}
+    whileInView={{
+      rotate: [0, 360],
+      transition: { repeat: Infinity, duration: 5, ease: "linear" },
+    }}
+  />
+</div>
+
 
         <motion.img
           src="/pune_slogan.png"

@@ -18,11 +18,13 @@ function Previous_Sponsors() {
   };
 
   return (
-    <section className="relative bg-red-100 py-4 px-4 min-h-screen">
-      <div className="flex flex-col">
-        
+    <section
+      className="relative bg-red-100 py-6 px-4 min-h-screen overflow-hidden"
+      style={{ backgroundImage: "url('./src/assets/grid dots.svg')" }}
+    >
+      <div className="flex flex-col mt-15">
         {/* Title */}
-        <div className="inline-block">
+        <div className="inline-block mt-5">
           <div className="flex justify-end">
             <h2 className="text-white text-2xl md:text-3xl font-semibold bg-red-500 px-6 py-3 rounded-full shadow-lg text-center w-[30%] mr-10">
               Previous Sponsors
@@ -32,8 +34,10 @@ function Previous_Sponsors() {
           {/* Year Buttons */}
           <div className="flex flex-wrap justify-start h-12 ml-10">
             <button
-              className={`ml-10 px-6 py-2 font-semibold transition duration-300 shadow-md text-xl ${
-                Year === "2023" ? "bg-white text-black" : "bg-black text-white hover:bg-gray-500"
+              className={`ml-10 px-6 py-2 font-semibold transition duration-300 shadow-md text-xl rounded-lg ${
+                Year === "2023"
+                  ? "bg-white text-black"
+                  : "bg-black text-white hover:bg-gray-500"
               }`}
               onClick={() => setYear("2023")}
             >
@@ -41,8 +45,10 @@ function Previous_Sponsors() {
             </button>
 
             <button
-              className={`px-6 py-2 font-semibold transition duration-300 shadow-md text-xl ${
-                Year === "2024" ? "bg-white text-black" : "bg-black text-white hover:bg-gray-500"
+              className={`px-6 py-2 font-semibold transition duration-300 shadow-md text-xl rounded-lg ${
+                Year === "2024"
+                  ? "bg-white text-black"
+                  : "bg-black text-white hover:bg-gray-500"
               }`}
               onClick={() => setYear("2024")}
             >
@@ -53,30 +59,30 @@ function Previous_Sponsors() {
 
         {/* Scroll Buttons */}
         <button
-          className="absolute left-10 top-[55%] -translate-y-1/2 text-white rounded-full"
+          className="absolute left-10 top-[55%] -translate-y-1/2 p-2 rounded-full hover:scale-110 transition"
           onClick={scrollLeft}
         >
-          <img src="src/assets/arrows.svg" alt=""  className="h-[100px] w-auto rotate-180"/>
+          <img src="src/assets/arrows.svg" alt="" className="h-[60px] w-auto rotate-180" />
         </button>
 
         <button
-          className="absolute right-10 top-[55%] -translate-y-1/2 text-white p-2 rounded-full"
+          className="absolute right-10 top-[55%] -translate-y-1/2 p-2 rounded-full hover:scale-110 transition"
           onClick={scrollRight}
         >
-          <img src="src/assets/arrows.svg" alt=""  className="h-[100px] w-auto "/>
+          <img src="src/assets/arrows.svg" alt="" className="h-[60px] w-auto" />
         </button>
 
-        {/* Sponsors Grid - 2 Rows, Horizontal Scroll */}
-        <div className="overflow-x-auto scrollbar-hide flex justify-center rounded-2xl">
+        {/* Sponsors Grid with Improved Scrollbar */}
+        <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 hover:scrollbar-thumb-gray-500 scrollbar-track-gray-200 flex justify-center rounded-2xl">
           <div
             ref={scrollRef}
-            className="flex flex-nowrap overflow-x-scroll snap-x snap-mandatory scrollbar-hide w-[90%] max-w-[1500px]"
+            className="flex flex-nowrap overflow-x-scroll snap-x snap-mandatory w-[90%] max-w-[1500px] rounded-2xl"
           >
             <div className="grid grid-rows-2 grid-flow-col gap-6 bg-white p-6 md:p-10 rounded-2xl shadow-xl w-max">
               {Sponsors[Year].map((sponsor, index) => (
                 <div
                   key={index}
-                  className="flex flex-col items-center justify-between w-[200px] h-[200px] p-4 border border-gray-200 rounded-lg shadow-sm bg-gray-50 transition hover:shadow-lg snap-center"
+                  className="flex flex-col items-center justify-between w-[200px] h-[200px] p-4 border border-gray-200 rounded-xl shadow-sm bg-gray-50 transition hover:shadow-lg snap-center"
                 >
                   {/* Image */}
                   <div className="w-[120px] h-[120px] flex items-center justify-center rounded-xl bg-white p-2 shadow">

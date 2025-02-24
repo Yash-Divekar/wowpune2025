@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Kartik P",
+        "description": "Google Relationship Manager",
+        "image": "/src/assets/previous_speakers/test.jpg"
+      },
+    {
+       "name": "Yash",
+        "description": "Google Relationship Manager",
+        "image": "/src/assets/previous_speakers/yash.jpeg" 
+    }
+]

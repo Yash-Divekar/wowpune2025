@@ -6,7 +6,7 @@ function Footer() {
     <>
         <section className='bg-black h-32 p-6'>
             <div className='flex flex-row gap-9 items-center text-white mx-10'>
-                <h3 className='text-4xl font-semibold mr-10'>GDGOC Pune</h3>
+                <h3 className='text-4xl font-semibold mr-10'>GDGoC Pune</h3>
                 <p className='text-lg'>About GDGoC Program</p>
                 <p className='text-lg'>FAQ</p>
                 <p className='text-lg'>Code Of Coduct</p>
