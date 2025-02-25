@@ -19,10 +19,10 @@ function Previous_Sponsors() {
 
   return (
     <section
-      className="relative bg-red-100 py-6 px-4 min-h-screen overflow-hidden"
-      style={{ backgroundImage: "url('./src/assets/grid dots.svg')" }}
+      className="relative bg-red-100 py-17 px-4 min-h-screen overflow-hidden "
+      style={{ backgroundImage: "url('/Grids/grid dots.svg')" }}
     >
-      <div className="flex flex-col mt-15">
+      <div className="flex flex-col">
         {/* Title */}
         <div className="inline-block mt-5">
           <div className="flex justify-end">
@@ -62,21 +62,22 @@ function Previous_Sponsors() {
           className="absolute left-10 top-[55%] -translate-y-1/2 p-2 rounded-full hover:scale-110 transition"
           onClick={scrollLeft}
         >
-          <img src="src/assets/arrows.svg" alt="" className="h-[60px] w-auto rotate-180" />
+          <img src="/Doddles/arrows.svg" alt="" className="h-[60px] w-auto rotate-180" />
         </button>
 
         <button
           className="absolute right-10 top-[55%] -translate-y-1/2 p-2 rounded-full hover:scale-110 transition"
           onClick={scrollRight}
         >
-          <img src="src/assets/arrows.svg" alt="" className="h-[60px] w-auto" />
+          <img src="/Doddles/arrows.svg" alt="" className="h-[60px] w-auto" />
         </button>
 
-        {/* Sponsors Grid with Improved Scrollbar */}
-        <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 hover:scrollbar-thumb-gray-500 scrollbar-track-gray-200 flex justify-center rounded-2xl">
+        {/* Sponsors Grid with Custom Horizontal Scrollbar */}
+        <div className="overflow-x-auto w-full flex justify-center rounded-2xl">
           <div
             ref={scrollRef}
-            className="flex flex-nowrap overflow-x-scroll snap-x snap-mandatory w-[90%] max-w-[1500px] rounded-2xl"
+            className="flex flex-nowrap overflow-x-scroll snap-x snap-mandatory w-[90%] max-w-[1500px] rounded-2xl
+              custom-horizontal-scrollbar"
           >
             <div className="grid grid-rows-2 grid-flow-col gap-6 bg-white p-6 md:p-10 rounded-2xl shadow-xl w-max">
               {Sponsors[Year].map((sponsor, index) => (
@@ -108,6 +109,29 @@ function Previous_Sponsors() {
           </div>
         </div>
       </div>
+
+      {/* Custom Horizontal Scrollbar */}
+      <style jsx>{`
+        /* Custom Horizontal Scrollbar */
+        .custom-horizontal-scrollbar::-webkit-scrollbar {
+          height: 6px; /* Thin scrollbar */
+        }
+        .custom-horizontal-scrollbar::-webkit-scrollbar-thumb {
+          background: #ef4444; /* Red scrollbar */
+          border-radius: 6px;
+        }
+        .custom-horizontal-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #dc2626; /* Darker red on hover */
+        }
+        .custom-horizontal-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        /* Firefox */
+        .custom-horizontal-scrollbar {
+          scrollbar-width: thin;
+          scrollbar-color: #ef4444 transparent;
+        }
+      `}</style>
     </section>
   );
 }

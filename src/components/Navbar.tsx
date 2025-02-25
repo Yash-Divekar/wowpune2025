@@ -7,7 +7,7 @@ export default function Navbar() {
         href="#home"
         className="border border-black rounded-l-full px-4 py-2 font-bold text-2xl bg-white"
       >
-        GDGOC
+        GDGoC
       </a>
       <div className="border border-black rounded-r-full px-8 py-2 flex flex-row gap-8 items-center bg-white">
         <Link to="home" smooth={true} duration={600} className="cursor-pointer">

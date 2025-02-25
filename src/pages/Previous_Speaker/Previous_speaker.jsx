@@ -10,7 +10,7 @@ function PreviousSpeaker() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSpeaker((prev) => (prev + 1) % speakersData.length);
-    },3000);
+    },5000);
     return () => clearInterval(interval);
   }, []);
 
@@ -24,7 +24,7 @@ function PreviousSpeaker() {
           transition={{ duration: 1.5, ease: "easeInOut" }}
         >
           <img 
-            src="/src/assets/grid lines.png" 
+            src="/Grids/grid lines.png" 
             alt="Grid Background" 
             className="w-full object-cover"
           />
@@ -46,7 +46,7 @@ function PreviousSpeaker() {
         <div className="relative z-20">
           {/* Top-Left Quotes */}
           <motion.img 
-            src="/src/assets/Green_Quote.png" 
+            src="/Doddles/Green_Quote.png" 
             alt="Quote" 
             className="absolute top-[-100px] left-[-90px] w-36 rotate-[180deg] z-10"
             initial={{ y: 100, rotate: -70, opacity: 0 }}
@@ -54,7 +54,7 @@ function PreviousSpeaker() {
             transition={{ type: "spring", duration: 1.2 }}
           />
           <motion.img 
-            src="/src/assets/Green_Quote.png" 
+            src="/Doddles/Green_Quote.png" 
             alt="Quote" 
             className="absolute top-[-90px] left-[20px] w-36 rotate-[180deg] z-10"
             initial={{ y: 100, rotate: -70, opacity: 0 }}
@@ -77,12 +77,17 @@ function PreviousSpeaker() {
                 alt={speakersData[currentSpeaker].name} 
                 className="w-full h-full object-cover speaker_shape"
               />
+              <div className='absolute top-[85%] right-[5%] bg-red-500 w-[30%] rounded-xl p-2 outline '>
+                <h3 className='flex justify-center items-center font-semibold'>{`${speakersData[currentSpeaker].name}`}</h3>
+                <hr />
+                <p className='text-center'>{`${speakersData[currentSpeaker].description}`}</p>
+              </div>
             </motion.div>
           </AnimatePresence>
 
           {/* Bottom-Right Quotes */}
           <motion.img 
-            src="/src/assets/Green_Quote.png" 
+            src="/Doddles/Green_Quote.png" 
             alt="Quote" 
             className="absolute bottom-[220px] right-[0px] w-36 rotate-[180deg] z-10"
             initial={{ y: 50, rotate: 200, opacity: 0 }}
@@ -90,7 +95,7 @@ function PreviousSpeaker() {
             transition={{ type: "spring", duration: 1.2, delay: 0.2 }}
           />
           <motion.img 
-            src="/src/assets/Green_Quote.png" 
+            src="/Doddles/Green_Quote.png" 
             alt="Quote" 
             className="absolute bottom-[220px] right-[-100px] w-36 rotate-[180deg] z-10"
             initial={{ y: 50, rotate: 200, opacity: 0 }}

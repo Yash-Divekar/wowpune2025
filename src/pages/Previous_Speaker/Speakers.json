@@ -2,11 +2,11 @@
     {
         "name": "Kartik P",
         "description": "Google Relationship Manager",
-        "image": "/src/assets/previous_speakers/test.jpg"
+        "image": "/Content/Previous_Speakers/test.JPG"
       },
     {
        "name": "Yash",
         "description": "Google Relationship Manager",
-        "image": "/src/assets/previous_speakers/yash.jpeg" 
+        "image": "/Content/Previous_Speakers/yash.jpeg" 
     }
 ]

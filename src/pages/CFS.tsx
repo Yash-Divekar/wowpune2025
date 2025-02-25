@@ -24,7 +24,7 @@ export default function CFS() {
   }}
 >
   <motion.img
-    src="/src/assets/grid lines.png"
+    src="/Grids/grid lines.png"
     alt="Grid Background"
     className="w-full object-cover"
     initial={{ opacity: 1 }}
@@ -50,7 +50,7 @@ export default function CFS() {
 
       {/* Floating Images */}
       <motion.img
-        src="/toddles/image_15.png"
+        src="/Doddles/image_15.png"
         alt=""
         className="absolute left-1/2 -rotate-30 bottom-[5vh] w-56 -translate-x-[calc(50%+22rem)] z-20"
         initial={{ y: 100, rotate: -30, scale: 0.8, opacity: 0 }}
@@ -67,7 +67,7 @@ export default function CFS() {
         }}
       />
       <motion.img
-        src="/toddles/image_16.png"
+        src="/Doddles/image_16.png"
         alt=""
         className="absolute right-1/2 rotate- bottom-[10vh] w-40 translate-x-[calc(50%+22rem)] z-0"
         initial={{ y: 100, rotate: 15, scale: 0.8, opacity: 0 }}
@@ -117,7 +117,7 @@ export default function CFS() {
 
         {/* Floating Graphics */}
         <motion.img
-          src="/toddles/image_13.png"
+          src="/Doddles/image_13.png"
           alt=""
           className="absolute -top-4 left-0 w-56 -translate-x-1/2 z-20"
           initial={{ y: -100, rotate: 15, scale: 0.8, opacity: 0 }}
@@ -133,7 +133,7 @@ export default function CFS() {
           }}
         />
         <motion.img
-          src="/toddles/image_14.png"
+          src="/Doddles/image_14.png"
           alt=""
           className="absolute top-0 right-0 w-56 translate-x-1/2 -translate-y-1/2 z-20"
           initial={{ y: -100, rotate: -15, scale: 0.8, opacity: 0 }}

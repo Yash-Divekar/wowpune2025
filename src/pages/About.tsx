@@ -86,7 +86,7 @@ export default function About() {
             than just code - we're building the future!
           </motion.span>
           <motion.img
-            src="/toddles/image_7.png"
+            src="/Doddles/image_7.png"
             alt=""
             className="absolute w-28 top-0 left-0 -translate-x-1/2 -translate-y-1/6"
             initial={{ y: -100, rotate: -15, scale: 0.8, opacity: 0 }}
@@ -107,7 +107,7 @@ export default function About() {
             }}
           />
           <motion.img
-            src="/toddles/image_8.png"
+            src="/Doddles/image_8.png"
             alt=""
             className="absolute w-28 bottom-0 right-0 translate-x-1/2 translate-y-1/6"
             initial={{ y: 100, rotate: 15, scale: 0.8, opacity: 0 }}
@@ -131,7 +131,7 @@ export default function About() {
       </div>
       <div className="relative w-[30vw] ml-auto my-40" id="puzzle">
         <motion.img
-          src="/toddles/image_9.png"
+          src="/Doddles/image_9.png"
           alt=""
           className="absolute top-0 left-0 w-[200px] object-contain ml-10"
           initial={{ y: -200, rotate: -15, scale: 0.9, opacity: 0 }}
@@ -149,7 +149,7 @@ export default function About() {
           whileHover={{ scale: 1.05 }}
         />
         <motion.img
-          src="/toddles/image_10.png"
+          src="/Doddles/image_10.png"
           alt=""
           className="absolute top-0 right-0 w-[246px] h-[199px] object-contain mt-20"
           initial={{ y: -20, rotate: 5, scale: 0.95, opacity: 0 }}
@@ -167,7 +167,7 @@ export default function About() {
           whileHover={{ scale: 1.05 }}
         />
         <motion.img
-          src="/toddles/image_11.png"
+          src="/Doddles/image_11.png"
           alt=""
           className="absolute bottom-0 left-0 w-[200px] object-contain ml-5 mb-10"
           initial={{ y: 20, rotate: -5, scale: 0.95, opacity: 0 }}
@@ -185,7 +185,7 @@ export default function About() {
           whileHover={{ scale: 1.05 }}
         />
         <motion.img
-          src="/toddles/image_12.png"
+          src="/Doddles/image_12.png"
           alt=""
           className="absolute bottom-0 right-0 w-[200px] object-contain mr-11 -mb-10"
           initial={{ y: 200, rotate: 15, scale: 0.9, opacity: 0 }}

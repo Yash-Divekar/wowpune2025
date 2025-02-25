@@ -133,12 +133,12 @@ export default function Home() {
   return (
     <div ref={ref} className="relative flex flex-row">
       <motion.img
-        src="/grid.png"
+        src="/Grids/grid lines.png"
         alt=""
         className="absolute -z-10 h-screen w-screen"
         initial={{ scale: 1.2, opacity: 0 }}
         animate={
-          isInView ? { scale: 1, opacity: 0.8 } : { scale: 1.2, opacity: 0 }
+          isInView ? { scale: 1, opacity: 1 } : { scale: 1.2, opacity: 0 }
         }
         transition={{
           type: "spring",
@@ -148,7 +148,7 @@ export default function Home() {
         }}
       />
       <motion.img
-        src="/image_2.png"
+        src="/Shaniwar_Wada.png"
         alt=""
         className="h-screen"
         initial={{ x: -100, rotate: -10, opacity: 0 }}
@@ -168,7 +168,7 @@ export default function Home() {
       {[1, 2, 3, 4, 5, 6].map((index) => (
         <motion.img
           key={index}
-          src={`/toddles/image_${index}.png`}
+          src={`/Doddles/image_${index}.png`}
           alt=""
           className={`absolute ${
             index === 1
@@ -176,7 +176,7 @@ export default function Home() {
               : index === 2
               ? "w-32 top-[15vh] left-[8vw]"
               : index === 3
-              ? "w-28 top-[27vh] -left-[2vw] rotate-45"
+              ? "w-28 top-[27vh] -left-[2vw]"
               : index === 4
               ? "w-40 top-[40vh] left-[15vw]"
               : index === 5
@@ -211,9 +211,9 @@ export default function Home() {
       ))}
 
 <motion.img
-          src={`./src/assets/Logo/Angle_Logo.svg`}
+          src={`./Logo/Angle_Logo.svg`}
           alt=""
-          className="absolute -top-30 scale-[20%]"
+          className="absolute -top-30 -left-10 scale-[20%]"
           initial={toddleAnimations[3].initial}
           animate={
             isInView
@@ -261,7 +261,7 @@ export default function Home() {
         <div className="relative flex justify-center items-center">
   {/* Main Image */}
   <motion.img
-    src="./src/assets/Logo/wow.svg"
+    src="./Logo/Wow_without_circle.svg"
     alt=""
     className="w-[30vw]"
     initial={{ scale: 0, rotate: -10, opacity: 0 }}
@@ -280,7 +280,7 @@ export default function Home() {
 
   {/* Overlay Circle */}
   <motion.img
-    src="./src/assets/Logo/Circle.svg"
+    src="./Logo/Circle.svg"
     alt=""
     className="w-[5vw] absolute top-[51%] left-[52%] -translate-x-1/2 -translate-y-1/2"
     initial={{ scale: 0, rotate: -10, opacity: 0 }}

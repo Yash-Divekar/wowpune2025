@@ -95,7 +95,7 @@ function FAQ() {
                                             <FaTwitter className=" text-2xl hover:text-gray-600 transition duration-300 hover:scale-[1.5]" />
                                             </a>
                                         </div>
-                                        <img src="wow_logo.png" alt=""  className='w-[20%]'/>
+                                        <img src="/Logo/Main_wow_logo.svg" alt=""  className='w-[20%]'/>
                     </div>
                 </div>
                 
