@@ -1,18 +1,33 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-import About from "./pages/About";
-import CFS from "./pages/CFS";
-import Home from "./pages/Home";
+import {Home, Previous_speaker, Previous_Sponcers , FAQ , Footer, CFS , About} from "./pages/index";
 
 function App() {
   return (
-    <main className="font-sans">
+    <main className="font-sans w-full">
       <Navbar />
-      <Home />
-      <About />
-      <CFS />
+      <section id="home">
+        <Home />
+      </section>
+      <section id="about">
+        <About />
+      </section>
+      <section id="speaker">
+        <Previous_speaker />
+      </section>
+      <section id="cfs">
+        <CFS />
+      </section>
+      <section id="sponsor">
+        <Previous_Sponcers />
+      </section>
+      <section id="faq">
+        <FAQ />
+      </section>
+      <Footer />
     </main>
   );
 }
+
 
 export default App;
